@@ -1,0 +1,122 @@
+<div class="productos">
+
+  <!---
+  <h1>Productos</h1>
+
+  <div class="actions">
+    <button mat-raised-button color="primary">Agregar</button>
+    <mat-form-field>
+      <mat-label>Buscar</mat-label>
+    </mat-form-field>
+  </div>
+  -->
+
+  <div class="options-top">
+    <!-- <button mat-raised-button color="primary">Agregar</button> -->
+    <div class="add-filter" (click)="add()">
+      <mat-icon>check</mat-icon>
+        Agregar
+    </div>
+  
+  
+    <!-- Buscador con lupa SVG -->
+    <div class="search-container">
+      <input matInput placeholder="Buscar" 
+      (keyup)="applyFilter($event)" 
+      [(ngModel)]="buscar"      
+      class="search-input">
+    </div>
+
+  </div>
+
+
+
+    <div class="table-container">
+      <!-- 
+  displayedColumns: string[] = ['cod', 'des', 'uni', 'stk', 'cat','est','act'];
+      
+      -->
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+          <ng-container matColumnDef="cod">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Codigo</th>
+            <td class="bajo" mat-cell *matCellDef="let element">{{element.barCode}}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="des">
+            <th class="bold" style="width: 25%;"  mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <td class="bajo" mat-cell *matCellDef="let element">{{element.description}}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="uni">
+            <th class="bold" mat-header-cell *matHeaderCellDef>UN</th>
+            <td class="bajo" mat-cell *matCellDef="let element">{{element.unit}}</td>
+          </ng-container>
+        
+          <ng-container matColumnDef="stk">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Stock Inicial</th>
+            <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.initialStock}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="stkA">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Stock Actual</th>
+            <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.currentStock}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="cat">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Categoria</th>
+            <td class="bajo" mat-cell *matCellDef="let element">{{element.category}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="est">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Estado</th>
+            <td class="bajo" mat-cell *matCellDef="let element">{{element.state}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="act">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="primary" (click)="edit(element.idProduct)">
+                <mat-icon style="transform: scale(0.7);">edit</mat-icon>
+              </button>
+          
+              <!-- Botón de agregar -->
+              <button mat-icon-button color="accent" (click)="delete(element)">
+                <mat-icon style="transform: scale(0.9);">add</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        </table>
+          <mat-paginator 
+            [length]="dataSource.filteredData.length" 
+            [pageSizeOptions]="[10, 15]" 
+            [pageSize]="10"
+            >
+
+          </mat-paginator>
+
+        @if(this.dataSource.filteredData.length === 0){
+          <br>
+          No tienes productos con esta busqueda
+          <a mat-button (click)="add()">Agregar</a>
+        }
+        
+        
+
+
+
+
+    </div>
+
+    
+
+
+    <!-- <app-loading-spinner [loading]="loading" [errorMessage]="errorMessage"></app-loading-spinner> -->
+
+  </div>
+  

@@ -1,0 +1,73 @@
+<div class="content">
+    <form [formGroup]="productGroup" (ngSubmit)="add()">
+        <h1>Agregar productos</h1>
+        <input 
+        matInput 
+        formControlName="codigo" 
+        placeholder="Código" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('codigo')?.invalid && this.submitted}">
+
+    <!-- Descripción -->
+    <input 
+        matInput 
+        formControlName="description" 
+        placeholder="Descripción" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('description')?.invalid && submitted}">
+
+    <div class="row">
+        <!-- Stock Actual -->
+        <input 
+            matInput 
+            formControlName="stock" 
+            placeholder="Stock inicial" 
+            class="search-input stk"
+            [ngClass]="{'invalid-input': productGroup.get('stock')?.invalid && submitted}">
+
+        <!-- Categoría -->
+
+
+        <app-field-auto-complete 
+            class="cat"
+            [list]="categories" 
+            [invalid]="(productGroup.get('category')?.invalid && submitted)?true:false"
+            [placeholder]="'Categoria'"
+            formControlName="category"
+            
+            />
+        <!-- Uni -->
+        <app-field-auto-complete 
+            [list]="units" 
+            [invalid]="(productGroup.get('uni')?.invalid && submitted)?true:false"
+            [placeholder]="'Uni.'"
+            formControlName="uni"
+            class="uni"
+            
+            />
+
+        <!-- <input 
+            matInput 
+            formControlName="uni" 
+            placeholder="Uni." 
+            class="search-input uni"
+            [ngClass]="{'invalid-input': productGroup.get('uni')?.invalid && submitted}"> -->
+
+    </div>
+    <button class="add-filter">
+        @if (this.isEdit) {
+            Modificar
+        }@else {
+            Agregar
+        }
+    </button>
+
+        <h4>{{error}}</h4>
+    
+        <!-- <div  class="add-filter" (submit)="add()">
+              Agregar
+          </div> -->
+    </form>
+
+
+</div>

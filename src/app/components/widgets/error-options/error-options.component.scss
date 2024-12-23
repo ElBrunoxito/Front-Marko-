@@ -1,0 +1,56 @@
+.content {
+    background-color: #212233;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  h1[mat-dialog-title] {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+  }
+  
+  [mat-dialog-content] p {
+    font-size: 1rem;
+    color: #b0b3cc;
+    margin-bottom: 20px;
+  }
+  
+  [mat-dialog-actions] {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding-top: 10px;
+  }
+  
+  button.mat-button.no {
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  button.mat-button.si {
+    color: #ffffff;
+    background-color: #5568fe;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+  }
+  
+  button.mat-button.no:hover {
+    background-color: #ff6b6b;
+    color: #ffffff;
+  }
+  
+  button.mat-button.si:hover {
+    background-color: #3348d4;
+  }
+  

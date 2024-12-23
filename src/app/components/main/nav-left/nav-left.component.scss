@@ -1,0 +1,226 @@
+/* sidebar.component.scss */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+
+.sidebar {
+    max-width: 289px;
+    width: 100%;
+    background-color: #1d1d37;
+    color: white;
+    height: 100vh;
+    //padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+  
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+  
+      .logo-icon {
+        width: 50px;
+        //margin-bottom: 10px;
+      }
+  
+      h2 {
+        font-size: 28px;
+        font-weight: bold;
+        font-family: 'Inter';
+        margin: 0;
+      }
+  
+      p {
+        font-size: 20px;
+        font-weight: lighter;
+        font-family: 'Inter';
+        color: #fff;
+      }
+  
+      .minimize {
+        display: block;
+       // margin-top: 10px;
+        font-size: 14px;
+        color: #9e9e9e;
+        cursor: pointer;
+      }
+    }
+  
+    .menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h3 {
+        font-size: 16px;
+        width: 100%;
+        color: #9e9e9e;
+       // margin-bottom: 20px;
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          display: flex;
+          align-items: center;
+          padding: 10px 0;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #2e2e57;
+          }
+  
+          mat-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 7vh;
+            margin-right: 15px;
+            color: white;
+          }
+  
+          span {
+            font-size: 3vh;
+            font-weight: bold;
+            font-family: 'Inter';
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  */
+
+  /////////////////////
+
+
+
+$minimize-a : false;
+
+@mixin dynamic-styles($minimize-a){
+  width: if($minimize-a,100vw,10vw);
+}
+
+.content{
+    max-height: 911px;
+    max-width: 289px;
+    height: 100vh;
+    width: 239px;
+
+
+    @include dynamic-styles($minimize-a);
+      
+    display: flex;
+
+  
+}
+.col-0{
+    display: flex;
+    flex-direction: column;
+    //@include dynamic-styles($minimize-a);
+
+    width: 289px;
+    background-color: #212333;
+    padding: 20px 30px;
+    transition: width 0.3s ease;
+    >h1{
+        font-weight: lighter;
+        font-family: "Inter";
+        color: #fff;
+        font-size: 20px;
+    }
+
+}
+
+
+//.minimice {
+
+//}
+
+
+
+.logo{
+    display: flex;
+    width: 239px;
+    flex-direction: column;
+    font-family: "Inter";
+    color: #fff;
+    >h3{
+        font-weight: lighter;
+        text-align: end;
+    }
+}
+.name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    >img{
+      width: 80px;
+      height: 78px;
+      border-radius: 50%;
+    }
+}
+
+.mini{
+    margin-left: -30px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    >hr{
+       flex: 1;
+       border: 0;
+       height: 1px;
+       background: #fff; 
+       margin-right: 6px;
+    }
+    >a{
+        font-family: 'Inter';
+        font-size: 20px;
+        font-weight: lighter;
+        cursor: pointer;
+    }
+
+
+}
+
+.options{
+    //width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    :hover .option{
+      border-bottom: 2px solid #fff;
+    }
+}
+
+
+.option{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  color: #fff;
+  font-family: 'Inter';
+  font-weight: bold;
+  margin-bottom: 29px;
+  cursor: pointer;
+  &:hover{
+    background-color: #31344d;
+  }
+  >h1{
+      font-size: 24px;
+      margin-left:9px ;
+  }
+
+
+}
+
+

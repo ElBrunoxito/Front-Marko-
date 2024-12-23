@@ -1,0 +1,122 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.content{
+
+}
+
+.data{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  > form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.image-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+  }
+  
+  .image-container:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .circle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .image-container:hover .hover-overlay {
+    opacity: 1;
+  }
+  
+  .upload-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    fill: white;
+  }
+  
+  .hover-overlay p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .search-input {
+    
+    width: 200%;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid #79747E;
+    margin-bottom: 10px;
+
+    &:focus{
+        outline: none;
+    }
+
+
+    }
+  
+      
+.add-filter {
+  height: 40px;
+  width: 111px;
+  //margin-right: 20px;
+  border-radius: 10px;
+  background-color: #212233;
+  color: #fff;
+  font-family: 'Inter';
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  &:hover{
+      background-color: #363753;
+      
+  }
+
+}

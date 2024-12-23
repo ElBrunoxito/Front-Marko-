@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.content{
+    margin: 10px 35px;
+    margin-bottom: 89px ;
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    font-family: 'Inter';
+    font-weight: bolder;
+    font-size: 24;
+    margin-bottom: 34px;
+
+}
+
+
+
+.search-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    //margin-right: 20px;
+}
+
+  
+.search-input,option {
+    
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid #79747E;
+    margin-bottom: 10px;
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.search-input[type="date"]{
+    font-family: 'Inter';
+}
+
+
+  
+.add-filter {
+    height: 40px;
+    width: 111px;
+    //margin-right: 20px;
+    border-radius: 10px;
+    background-color: #212233;
+    color: #fff;
+    font-family: 'Inter';
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:hover{
+        background-color: #363753;
+        
+    }
+
+  }
+.invalid-input {
+    border: 2px solid red;
+}
+  

@@ -1,0 +1,9 @@
+<div>
+    <select class="search-input" [ngClass]="{'invalid': invalid}" (change)="selectChange($event)" [value]="selectedValue" [disabled] = "this.noHa">
+      <option *ngFor="let item of list" 
+      [value]="isTypeComprobante(item) ? item.idTypeComprobante : item.idTypePayment">
+      {{ item.name }}</option>
+    </select>
+  </div>
+
+  

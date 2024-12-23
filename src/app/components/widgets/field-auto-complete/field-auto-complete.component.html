@@ -1,0 +1,29 @@
+<!-- <div class="card flex justify-content-center">
+    <form [formGroup] ="formGroup">
+        <p-autoComplete 
+            class="search-input"
+            formControlName="selectedCountry"
+            [suggestions]="filteredCountries"
+            (completeMethod)="filterCountry($event)"
+            optionLabel="name" />
+    </form>
+</div> -->
+
+<!-- Categoría -->
+
+    <form class="example-form">
+        <input type="text" 
+               [placeholder]="placeholder"
+               [formControl]="control"
+               [matAutocomplete]="auto"
+               [ngClass]="{'invalid-input': invalid}"
+               class="search-input"
+               >
+
+
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (street of filteredStreets | async; track street) {
+            <mat-option [value]="street">{{street}}</mat-option>
+          }
+        </mat-autocomplete>
+      </form>

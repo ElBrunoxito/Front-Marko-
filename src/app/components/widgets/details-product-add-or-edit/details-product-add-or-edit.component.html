@@ -1,0 +1,72 @@
+<div class="content">
+    <form [formGroup]="productGroup" (ngSubmit)="add()">
+        <h1>Agregar producto</h1>
+        
+  
+
+
+        <!-- <app-select-product-w 
+        style="width: 100%;"
+        formControlName="idProduct"
+        [productos]="productos"
+        [invalid]="(productGroup.get('idProduct')?.invalid || false) && submitted"
+        /> -->
+
+        <!-- <app-select-product-w
+        [products]="productos"
+        formControlName="idProduct"
+        [initialBarCode]="barCode"
+        /> -->
+        <app-select-product-w
+        [products]="productos"
+        formControlName="idProduct"
+        [initialBarCode]="this.barCode"
+        [invalid]="(productGroup.get('idProduct')?.invalid || false) && submitted"
+        style="width: 100%;"
+        />
+                        
+        @if (isBuy) {
+
+            <input
+            matInput
+            formControlName="dueDate"
+            type="date"
+            placeholder="Fecha de vencimiento"
+            class="search-input"
+            [ngClass]="{'invalid-input': productGroup.get('dueDate')?.invalid && submitted}">
+        }
+
+        <input 
+        matInput 
+        formControlName="quantity" 
+        placeholder="Cantidad" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('quantity')?.invalid && submitted}">
+        
+        <input 
+        matInput 
+        formControlName="price" 
+        placeholder="Precio" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('price')?.invalid && submitted}">
+      
+
+
+
+    <button class="add-filter">
+        @if (this.isEdit) {
+            Modificar
+        }@else {
+            Agregar
+        }
+    </button>
+
+        <h4>{{error}}</h4>
+    
+        <!-- <div  class="add-filter" (submit)="add()">
+              Agregar
+          </div> -->
+    </form>
+
+
+</div>

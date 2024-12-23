@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.content{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+
+.left{
+    max-width: 289px;
+    max-height: 911px;
+    //width: 239px;
+    //width: 100%;
+    width: 100vw;
+    flex-shrink: 0;
+    position: fixed;
+}
+
+.rigth{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin-left: 289px;
+}
+
+app-nav-top{
+    width: 100%;
+    transition: width 0.3s;
+
+}
+

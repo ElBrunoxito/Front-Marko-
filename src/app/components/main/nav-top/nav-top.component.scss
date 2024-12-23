@@ -1,0 +1,72 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.col-1{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nav-top{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 56px;
+    background-color: #f8f8f8;
+    padding: 13px 14px;
+    
+}
+.welcome{
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Inter";
+    color: #303030;
+}
+
+.my-user{
+    display: flex;
+    align-items: center;
+    font-family: 'Inter';
+    font-weight: bold;
+    >h1{
+        font-size: 24px;
+    }
+}
+
+.nav-top {
+    position: relative; // Para posicionar el menú desplegable
+  }
+  
+  .my-user {
+    cursor: pointer; // Cambia el cursor para indicar que es clickeable
+  }
+  
+  .options {
+    position: absolute;
+    top: 100%; // Se posiciona debajo del botón
+    right: 0; // Alinea a la derecha
+    background-color: white; // Color de fondo del menú
+    border: 1px solid #ccc; // Bordes del menú
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra
+    z-index: 100; // Para que se muestre sobre otros elementos
+  
+    ul {
+      list-style: none; // Quita viñetas
+      margin: 0;
+      padding: 0;
+  
+      li {
+        padding: 10px 15px; // Espaciado de los elementos
+        cursor: pointer; // Cambia el cursor para indicar que son clickeables
+  
+        &:hover {
+          background-color: #f0f0f0; // Efecto hover
+        }
+      }
+    }
+  }
+  
+

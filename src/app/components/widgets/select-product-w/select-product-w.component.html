@@ -1,0 +1,74 @@
+  <!-- <input
+    type="text"
+    matInput
+    class="search-input"
+    [formControl]="control"
+    placeholder="Producto"
+    [matAutocomplete]="auto"
+    (blur)="onBlur()"
+    [ngClass]="{'invalid-input': !control.valid}"
+  >
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+      {{ option.barCode }} - {{ option.description }}
+    </mat-option>
+  </mat-autocomplete> -->
+
+    <!-- <input 
+    type="text" 
+    matInput 
+    [formControl]="control" 
+    [matAutocomplete]="auto" 
+    placeholder="Buscar producto"
+    class="search-input"
+    (blur)="onBlur()"
+    (focus)="selectAllText($event)"
+    [ngClass]="{'invalid-input': invalid}"
+    (ngModelChange)="onIdChange($event)"
+
+     />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+      <mat-option *ngFor="let i of filteredOptions | async" [value]="i.idProduct">
+        {{i.barCode}} - {{i.description}}
+      </mat-option>
+    </mat-autocomplete> -->
+
+    <div class="autocomplete-container">
+      <!-- Input para búsqueda -->
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="onInputChange()"
+        (focus)="toggleDropdown(true)"
+        (blur)="onBlur()"
+        (keydown.arrowDown)="navigate(1)"
+        (keydown.arrowUp)="navigate(-1)"
+        (keydown.enter)="selectActiveProduct()"
+        placeholder="Buscar producto..."
+        class="search-input"
+        [ngClass]="{'invalid-input': invalid}"
+        (focus)="selectAllText($event)"
+
+
+      />
+    
+      <!-- Lista desplegable para productos filtrados -->
+      <ul *ngIf="isDropdownOpen && filteredProducts.length > 0" class="dropdown-menu">
+        <li
+          *ngFor="let product of filteredProducts; let i = index"
+          [class.active]="i === activeIndex"
+          (click)="selectProduct(product)"
+          (mouseenter)="activeIndex = i"
+        >
+          {{ product.barCode }} - {{ product.description }}
+        </li>
+      </ul>
+    
+      <!-- Mensaje cuando no hay resultados -->
+      <!-- <div *ngIf="isDropdownOpen && filteredProducts.length === 0 && searchTerm.length > 0 && !selectedProduct && this.isValidProduct()" >
+        <span>No existe ese objeto</span>
+        <button (click)="addProduct()">Agregar producto</button>
+      </div> -->
+      
+    </div>
+    

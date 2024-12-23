@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.content{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+mat-dialog-actions, .buttons{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+
+.no{
+    background-color: red;
+    
+}
+
+.no:hover{
+    background-color: rgb(255, 92, 92);
+    cursor: pointer;
+}
+
+.si{
+    background-color: rgb(145, 145, 145);
+    &:hover{
+        background-color: rgb(88, 88, 88);
+    }
+    &:focus{
+        border: none;
+    }
+}

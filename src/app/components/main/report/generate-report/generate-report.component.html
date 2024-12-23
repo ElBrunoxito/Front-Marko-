@@ -1,0 +1,60 @@
+<div class="content">
+    <form [formGroup]="reportGroup" >
+    
+        <div class="title">
+            <label for="">Titulo:</label>
+
+            <input 
+            matInput 
+            formControlName="title" 
+            placeholder="Titulo" 
+            class="search-input"
+            [ngClass]="{'invalid-input': reportGroup.get('title')?.invalid && submitted}">
+    
+        </div>
+
+
+    <div class="product">
+        <label for="">Producto:</label>
+        <app-select-product-w 
+            [products]="productos"
+            formControlName="idProduct"
+            [invalid]="(reportGroup.get('idProduct')?.invalid || false) && submitted"
+            style="width: 100%;"
+        />
+    </div>
+
+    <div class="dates">
+        <input
+        matInput
+        formControlName="startDate"
+        type="date"
+        placeholder="Fecha de inicio"
+        class="search-input"
+        [ngClass]="{'invalid-input': reportGroup.get('startDate')?.invalid && submitted}">
+        <input
+        matInput
+        formControlName="endDate"
+        type="date"
+        placeholder="Fecha de vencimiento"
+        class="search-input"
+        [ngClass]="{'invalid-input': reportGroup.get('endDate')?.invalid && submitted}">
+    </div>
+    </form>
+
+    <div class="type">
+        <label>
+            <input type="checkbox" id="checkbox2" [(ngModel)]="sinCobro"/> No cobrado
+          </label>
+        <label>
+            <input type="checkbox" id="checkbox1"  [(ngModel)]="cobrado"/> Cobrado
+          </label>
+
+    </div>
+
+    <button class="add-filter" (click)="generate()">
+        Generar
+    </button>
+
+
+</div>

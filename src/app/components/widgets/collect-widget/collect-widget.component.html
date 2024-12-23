@@ -1,0 +1,65 @@
+<div class="collect">
+
+    <h1>Terminar venta - Cobro</h1>
+    <div class="body">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png" width="100px" height="100px" alt="">
+        <div class="info" style="height: 50vh;">
+            <h1>Cantidad de productos: {{countProducts}}</h1>
+
+            <div class="discount"></div>
+
+            <app-selector
+                class="type"
+                [invalid]="(idTypePayment === null && submitted)"
+                [(ngModel)]="idTypePayment"
+                [list]="listTypes"
+                [type]="1"
+                style="width: 252px;"
+                [noHa]="isView"
+            /> 
+            <div class="discount">
+
+                <input 
+                matInput 
+                type="number"
+                placeholder="Descuento" 
+                class="search-input" 
+                style="width: 100%;"
+                [(ngModel)]="discount"
+                (input)="getDiscount($event)" 
+                [disabled]="isView"
+                /> 
+                
+                <!-- [ngClass]="{'invalid-input': (this.discount === undefined) && submitted}" -->
+                <select class="search-input" style="width: 30%;" [(ngModel)]="discountType" (input)="getDiscountSelect($event)" [disabled]="isView">
+                    <option [value]="'%'">%</option>
+                    <option value="">#</option>                
+                </select>
+                
+            </div>
+            <h4>Subtotal: S/.{{subTotal}}</h4>
+            <h4> Descuento: S/. - {{discountView}}</h4>
+            <h4>Total: S/. {{total}}</h4>
+
+            <p>{{ fechaHoraActual | date:'dd/MM/yyyy'}}  -  {{fechaHoraActual | date:'hh:mm:ss a' }}</p>
+
+            <button class="add-filter" (click)="createCollect()">
+                Terminar venta
+            </button>
+
+
+        </div>
+
+        <!-- <div class="pdf">
+            <h3>Vista previa</h3>
+            <div style="width: 154px; height: 500px; overflow: auto; background-color: red;">
+                <iframe [src]="pdfBlobUrl" style="width: 100%; height: 100%; border: none;"></iframe>
+
+            </div>
+
+        </div> -->
+
+    </div>
+
+
+</div>

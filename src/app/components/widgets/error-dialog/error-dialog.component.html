@@ -1,0 +1,14 @@
+<div class="content">
+
+    <!-- <h1 mat-dialog-title>{{ data.title }}</h1> -->
+    <h1 mat-dialog-title>Error</h1>
+
+    <div mat-dialog-content >
+      <p>{{ data.message }}</p>
+    </div>
+    <div class="buttons">
+      <!-- <button class="no" mat-button (click)="onNoClick()">No</button> -->
+      <button class="si" mat-button color="primary" (click)="onYesClick()">{{data.textButton}}</button>
+
+    </div>
+</div>

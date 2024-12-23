@@ -1,0 +1,125 @@
+<div class="content">
+    <h2>Hola, {{username}} eres el admin</h2>
+    <p>Un usuario con rol vendedor no puede ver ni hacer cambios en esta pestaña</p>
+    <div class="data">
+
+        <div class="left">
+        <form action="" [formGroup]="businessGroup" (ngSubmit)="updateBusiness()">
+
+            <div class="image-container" (click)="fileInput.click()">
+                <img *ngIf="imageSrc" [src]="imageSrc" alt="Imagen seleccionada" class="circle-image" />
+                <div class="hover-overlay">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="upload-icon">
+                    <path
+                      d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm5 11h-4v4h-2v-4H7l5-5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  <p>Cargar otra imagen</p>
+                </div>
+              </div>
+
+              <input
+              #fileInput
+              type="file"
+              accept="image/png, image/jpeg"
+              (change)="onFileSelected($event)"
+              hidden
+            />
+              
+            <input
+            matInput
+            formControlName="name"
+            placeholder="Nombre"
+            class="search-input"
+            [ngClass]="{'invalid-input': businessGroup.get('name')?.invalid && submitted}"
+          />
+        
+          <!-- Input para el campo 'description' -->
+          <input
+            matInput
+            formControlName="description"
+            placeholder="Descripción"
+            class="search-input"
+            [ngClass]="{'invalid-input': businessGroup.get('description')?.invalid && submitted}"
+          />
+        
+          <!-- Input para el campo 'ruc' -->
+          <input
+            matInput
+            formControlName="ruc"
+            placeholder="RUC"
+            class="search-input"
+            [ngClass]="{'invalid-input': businessGroup.get('ruc')?.invalid && submitted}"
+          />
+        
+          <!-- Input para el campo 'address' -->
+          <input
+            matInput
+            formControlName="address"
+            placeholder="Dirección"
+            class="search-input"
+            [ngClass]="{'invalid-input': businessGroup.get('address')?.invalid && submitted}"
+          />
+        
+          <!-- Input para el campo 'phone' -->
+          <input
+            matInput
+            formControlName="phone"
+            placeholder="Teléfono"
+            class="search-input"
+            [ngClass]="{'invalid-input': businessGroup.get('phone')?.invalid && submitted}"
+          />
+        
+          <!-- Input para el campo 'message' -->
+          <input
+            matInput
+            formControlName="message"
+            placeholder="Mensaje"
+            class="search-input"
+            [ngClass]="{'invalid-input': businessGroup.get('message')?.invalid && submitted}"
+          />
+        
+          
+     
+
+          <button class="add-filter">
+            Modificar
+        </button>
+      
+
+
+
+        </form>    
+    </div>
+
+
+        <div class="right">
+          <svg (click)="addUser()" width="150" height="150" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M118.75 49.9998H106.25V68.7498H87.5V81.2498H106.25V99.9998H118.75V81.2498H137.5V68.7498H118.75V49.9998ZM25 49.9998C24.923 53.3039 25.5171 56.5893 26.7462 59.6572C27.9753 62.7251 29.814 65.5119 32.151 67.8488C34.4879 70.1858 37.2747 72.0245 40.3426 73.2536C43.4105 74.4827 46.6959 75.0768 50 74.9998C53.3041 75.0768 56.5895 74.4827 59.6574 73.2536C62.7253 72.0245 65.5121 70.1858 67.8491 67.8488C70.186 65.5119 72.0247 62.7251 73.2538 59.6572C74.4829 56.5893 75.077 53.3039 75 49.9998C75.077 46.6957 74.4829 43.4103 73.2538 40.3424C72.0247 37.2745 70.186 34.4877 67.8491 32.1507C65.5121 29.8138 62.7253 27.9751 59.6574 26.746C56.5895 25.5169 53.3041 24.9228 50 24.9998C46.6959 24.9228 43.4105 25.5169 40.3426 26.746C37.2747 27.9751 34.4879 29.8138 32.151 32.1507C29.814 34.4877 27.9753 37.2745 26.7462 40.3424C25.5171 43.4103 24.923 46.6957 25 49.9998ZM62.5 49.9998C62.5804 51.6626 62.3121 53.3238 61.7123 54.8768C61.1126 56.4298 60.1947 57.8401 59.0175 59.0173C57.8404 60.1945 56.43 61.1124 54.877 61.7121C53.3241 62.3119 51.6628 62.5802 50 62.4998C48.3372 62.5802 46.6759 62.3119 45.123 61.7121C43.57 61.1124 42.1596 60.1945 40.9825 59.0173C39.8053 57.8401 38.8874 56.4298 38.2877 54.8768C37.6879 53.3238 37.4196 51.6626 37.5 49.9998C37.4196 48.337 37.6879 46.6757 38.2877 45.1228C38.8874 43.5698 39.8053 42.1594 40.9825 40.9823C42.1596 39.8051 43.57 38.8872 45.123 38.2874C46.6759 37.6877 48.3372 37.4194 50 37.4998C51.6628 37.4194 53.3241 37.6877 54.877 38.2874C56.43 38.8872 57.8404 39.8051 59.0175 40.9823C60.1947 42.1594 61.1126 43.5698 61.7123 45.1228C62.3121 46.6757 62.5804 48.337 62.5 49.9998ZM25 112.5C25 107.527 26.9754 102.758 30.4917 99.2415C34.0081 95.7252 38.7772 93.7498 43.75 93.7498H56.25C61.2228 93.7498 65.9919 95.7252 69.5083 99.2415C73.0246 102.758 75 107.527 75 112.5V118.75H87.5V112.5C87.5 108.396 86.6917 104.332 85.1212 100.541C83.5508 96.7495 81.2489 93.3045 78.3471 90.4027C75.4453 87.5009 72.0003 85.199 68.2089 83.6286C64.4174 82.0581 60.3538 81.2498 56.25 81.2498H43.75C35.462 81.2498 27.5134 84.5422 21.6529 90.4027C15.7924 96.2632 12.5 104.212 12.5 112.5V118.75H25V112.5Z" fill="black"/>
+          </svg>
+          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="user">
+              <th mat-header-cell *matHeaderCellDef> User</th>
+              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="role">
+              <th mat-header-cell *matHeaderCellDef> Role </th>
+              <td mat-cell *matCellDef="let element"> {{element.roles.join(', ')}} </td>
+            </ng-container>
+          
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          
+          
+            
+        </div>
+    </div>
+</div>

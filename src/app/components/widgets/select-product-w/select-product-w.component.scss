@@ -1,0 +1,84 @@
+.autocomplete-container {
+  position: relative;
+  width: 100%;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-menu li.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.no-results {
+  padding: 8px;
+  color: red;
+  cursor: pointer;
+  text-align: center;
+}
+
+button {
+  margin-top: 8px;
+  display: block;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.no-results {
+  padding: 8px;
+  color: red;
+  text-align: center;
+}
+
+
+.search-input {
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 2px solid #79747E;
+    margin-bottom: 10px;
+  
+    // Estilo para el enfoque del campo
+    &:focus {
+      outline: none;
+    }
+  }
+  
+  .invalid-input {
+    border: 2px solid red;
+  }
