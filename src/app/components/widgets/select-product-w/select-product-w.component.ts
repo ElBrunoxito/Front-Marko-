@@ -56,9 +56,23 @@ export class SelectProductWComponent implements OnInit,OnChanges {
   selectedProduct: ProductGetUserDTO | null = null; // Producto seleccionado actualmente
 
   private pendingValue: UUID | null = null; 
+  @Output() priceChanged = new EventEmitter<any>(); 
 
-  private onChange: (value: UUID | null) => void = () => {};
+
+  private onChange: (value: UUID | null) => void = () => {
+    this.priceChanged.emit()
+
+  };
   private onTouched: () => void = () => {};
+
+
+  private onChangeWithPriceProduct(product:ProductGetUserDTO){
+    this.onChange(product.idProduct);
+    this.priceChanged.emit(product.price);
+
+  }
+
+
 
   constructor(private cdRef: ChangeDetectorRef) { }
 
@@ -84,7 +98,8 @@ export class SelectProductWComponent implements OnInit,OnChanges {
     const foundProduct = this.products.find(product => product.barCode === barCode);
     if (foundProduct) {
       this.selectProduct(foundProduct, false);
-      this.onChange(foundProduct.idProduct);
+      //this.onChange(foundProduct.idProduct);
+      this.onChangeWithPriceProduct(foundProduct)
       this.isDropdownOpen = true;
     }
   }
@@ -149,7 +164,9 @@ export class SelectProductWComponent implements OnInit,OnChanges {
 
     // Emitir el cambio al control
     if (emitChange) {
-        this.onChange(product.idProduct); // Asignar el idProduct al formControlName
+//        this.onChange(product.idProduct); // Asignar el idProduct al formControlName
+        this.onChangeWithPriceProduct(product)
+
         this.productSelected.emit(product); // Emitir el producto seleccionado
     }
 
@@ -208,7 +225,9 @@ export class SelectProductWComponent implements OnInit,OnChanges {
       if (matchedProducts.length > 0) {
         const selectedProduct = matchedProducts[0];
         this.searchTerm = (`${selectedProduct.barCode} - ${selectedProduct.description}`);
-        this.onChange(selectedProduct.idProduct)
+        //this.onChange(selectedProduct.idProduct)
+        this.onChangeWithPriceProduct(selectedProduct)
+
         this.writeValue(selectedProduct.idProduct)
         return;
       }else{

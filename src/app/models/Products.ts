@@ -7,6 +7,7 @@ export interface ProductGet {
   description: string;
   unit: string;
   initialStock:number
+  price:number
   currentStock: number;      // Long en Java se convierte en number en TS
   category: string;
   //state: boolean;
@@ -25,6 +26,7 @@ export interface ProductAddDTO {
   barCode: string;
   description: string;
   initialStock?: number;     // Valor por defecto de 0 en tu clase Java
+  price:number;
   categoryAddFast: CategoryAddDTO;  // Asumiendo que esta interfaz también existe
   unitAddFast: UnitAddDTO;
 }
@@ -36,6 +38,7 @@ export interface ProductGetAdminDTO{
   barCode: string;
   description: string;
   initialStock: number;
+  price:number
   category: string;
   unit: string;
 }
@@ -45,4 +48,5 @@ export interface ProductGetUserDTO{
   idProduct: UUID;  // UUID as string
   barCode: string;
   description: string;
+  price:number
 }

@@ -30,7 +30,6 @@ import { firstValueFrom } from 'rxjs';
     MatButtonModule,
     ButtonModule,
     MatIcon,
-    RouterLink,
     FormsModule,
 ],
   templateUrl: './products.component.html',
@@ -41,7 +40,7 @@ import { firstValueFrom } from 'rxjs';
 
 export class ProductsComponent implements OnInit{
   //Paginator
-  displayedColumns: string[] = ['cod', 'des', 'uni', 'stk','stkA', 'cat','est','act'];
+  displayedColumns: string[] = ['cod', 'des', 'uni', 'stk','pri','stkA', 'cat','est','act'];
   dataSource = new MatTableDataSource<ProductGet>([]);
   public buscar :any = ""
 
@@ -59,7 +58,8 @@ export class ProductsComponent implements OnInit{
     },
     unitAddFast: {            
       name: ''
-    }
+    },
+    price:0.0
   };
 
 
@@ -159,6 +159,7 @@ export class ProductsComponent implements OnInit{
           barCode: '',
           description: '',
           initialStock: 0,
+          price:0.0,
           categoryAddFast:{
             name:''
           },

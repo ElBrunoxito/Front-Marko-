@@ -54,6 +54,13 @@
             [ngClass]="{'invalid-input': productGroup.get('uni')?.invalid && submitted}"> -->
 
     </div>
+
+    <input 
+    matInput 
+    formControlName="price" 
+    placeholder="Precio para la venta" 
+    class="search-input"
+    [ngClass]="{'invalid-input': productGroup.get('price')?.invalid && this.submitted}">
     <button class="add-filter">
         @if (this.isEdit) {
             Modificar

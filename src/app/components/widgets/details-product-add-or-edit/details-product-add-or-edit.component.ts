@@ -77,8 +77,12 @@ export class DetailsProductAddOrEditComponent implements OnInit,OnDestroy{
   ngOnDestroy(): void {
   }
 
-
-
+  priceSuggest!:number 
+  onProductSelected(price:number) {
+    this.productGroup.patchValue({price})
+    this.priceSuggest = price
+    
+  }
   ngOnInit(): void {
 
     this.isBuy = this.data.isBuy;

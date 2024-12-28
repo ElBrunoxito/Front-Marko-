@@ -11,6 +11,7 @@ import { GenerateReportComponent } from "./report/generate-report/generate-repor
 import { BusinessComponent } from "./business/business.component";
 import { NoPermissionComponent } from "../no-permission/no-permission.component";
 import { protectedRoutesAdminGuard } from "../../guards/protected-routes-admin.guard";
+import { DashboardComponent } from "./dashboard/dashboard.component";
 
 
 
@@ -20,6 +21,7 @@ export const MAIN_ROUTES:Routes=[
       redirectTo: 'sales',
       pathMatch:'full'
     },
+    { path:'dashboard', component:DashboardComponent, canActivate: [protectedRoutesAdminGuard]},
     { path:'products', component:ProductsComponent, canActivate:[protectedRoutesAdminGuard]},
 
     { path:'buys', component:BuysComponent,canActivate:[protectedRoutesAdminGuard] },

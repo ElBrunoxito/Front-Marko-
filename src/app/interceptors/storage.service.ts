@@ -8,6 +8,7 @@ export class StorageService {
   private readonly TOKEN_KEY = 'token';
   private readonly USER = 'user'
   private readonly BUSSINESS = 'bs';
+  private readonly URLIMAGE = 'imageUrl'
 
   //private readonly EXP_TOKEN = 'exp_tkn'
   private readonly ROLES = 'rls';
@@ -90,7 +91,32 @@ export class StorageService {
   dropExpirationDate():void{
 
     localStorage.removeItem(this.EXPIRATION_DATE)
+  } 
+
+  setNameBusiness(name: string): void {
+    localStorage.setItem(this.BUSSINESS,name);
   }
+
+  getNameBusiness(): string | null{
+    return localStorage.getItem(this.BUSSINESS);
+  }
+
+  dropNameBusiness(): void {
+    localStorage.removeItem(this.BUSSINESS);
+  }
+
+  setUrlImage(url: string): void {
+    localStorage.setItem(this.URLIMAGE,url);
+  }
+
+  getUrlImage(): string | null{
+    return localStorage.getItem(this.URLIMAGE);
+  }
+
+  dropUrlImage(): void {
+    localStorage.removeItem(this.URLIMAGE);
+  }
+
 
 
   dropAll(){

@@ -33,12 +33,9 @@ import { CollectWidgetComponent } from '../../../widgets/collect-widget/collect-
     MatButtonModule,
     ButtonModule,
     MatIcon,
-    RouterLink,
     FormsModule,
-    FieldAutoCompleteComponent,
     SelectorComponent,
     NgClass,
-    NgIf,
     CommonModule
   ],
   templateUrl: './add-sale.component.html',

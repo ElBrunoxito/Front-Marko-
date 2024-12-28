@@ -58,6 +58,11 @@
             <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.initialStock}}</td>
           </ng-container>
 
+          <ng-container matColumnDef="pri">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Precio de venta</th>
+            <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.price}}</td>
+          </ng-container>
+
           <ng-container matColumnDef="stkA">
             <th class="bold" mat-header-cell *matHeaderCellDef>Stock Actual</th>
             <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.currentStock}}</td>

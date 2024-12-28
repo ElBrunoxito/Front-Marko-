@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessService } from '../../../service/business.service';
 import { RouterLink } from '@angular/router';
+import { StorageService } from '../../../interceptors/storage.service';
 
 @Component({
   selector: 'app-nav-left',
@@ -24,6 +25,7 @@ export class NavLeftComponent implements OnInit {
 
   constructor(
     private businessService:BusinessService,
+    private storageService:StorageService
     
   ){
 
@@ -45,6 +47,8 @@ export class NavLeftComponent implements OnInit {
       next:(res)=>{
         this.nombre = res.nombreNegocio;
         this.urlImage = res.urlImage
+        this.storageService.setUrlImage(this.urlImage)
+        this.storageService.setNameBusiness(this.nombre)
       },
       error:(err)=>{
         this.nombre = "null";

@@ -59,7 +59,9 @@ export class AddProductComponent implements OnInit,OnDestroy{
       description: ['', Validators.required], 
       stock: ['',[Validators.required, Validators.pattern('^[0-9]+$')]], 
       category: ['', Validators.required], 
-      uni: ['', Validators.required] 
+      uni: ['', Validators.required],
+      price: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]]
+
     });
   }
 
@@ -84,6 +86,7 @@ export class AddProductComponent implements OnInit,OnDestroy{
             barCode:res.barCode,
             description: res.description,
             initialStock:res.initialStock,
+            price: res.price,
             categoryAddFast: {
               name: res.category,
             },
@@ -136,7 +139,9 @@ export class AddProductComponent implements OnInit,OnDestroy{
       description: [data.description, Validators.required], 
       stock: [data.initialStock,[Validators.required, Validators.pattern('^[0-9]+$')]], 
       category: [data.categoryAddFast.name, Validators.required], 
-      uni: [data.unitAddFast.name, Validators.required] 
+      uni: [data.unitAddFast.name, Validators.required],
+      price: [data.price, [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]]
+
     });
   }
 
@@ -152,7 +157,8 @@ export class AddProductComponent implements OnInit,OnDestroy{
       },
       unitAddFast: {
         name: this.productGroup.get('uni')?.value // Obtiene el valor del campo 'uni'
-      }
+      },
+      price:this.productGroup.get('price')?.value
     };
   }
 
@@ -162,7 +168,9 @@ export class AddProductComponent implements OnInit,OnDestroy{
       description: ['', Validators.required], 
       stock: ['', Validators.pattern('^[0-9]+$')], 
       category: ['', Validators.required], 
-      uni: ['', Validators.required] 
+      uni: ['', Validators.required],
+      price: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]]
+
     });
     this.submitted = false;
   }
@@ -197,7 +205,9 @@ export class AddProductComponent implements OnInit,OnDestroy{
         },
         unitAddFast:{
           name:this.productGroup.get("uni")?.value
-        }
+        },
+        price:this.productGroup.get('price')?.value
+
       }
       const confirmed = await this.helping.openFieldErrorWithOptions("Advertencia", `El producto ${product.description} se va agregar con stock inicial${product.initialStock}\nEstas seguro de crear el cobro`)
       if(!confirmed){
@@ -211,13 +221,14 @@ export class AddProductComponent implements OnInit,OnDestroy{
       if(this.isEdit){
         this.productService.update(product).subscribe({
           next:(res:Response)=>{      
-            const product:ProductGet = res.body as ProductGet
+            const productRes:ProductGet = res.body as ProductGet
             this.helping.openSnackBar(res.message,"OK",5000)
             this.clearFields();
 
             this.helping.setLoading(false)
-            product.state = product.state ? "ACTIVO":"INACTIVO"
-            this.productAdded.emit(product)
+            productRes.state = productRes.state ? "ACTIVO":"INACTIVO"
+            console.warn(product)
+            this.productAdded.emit(productRes)
             this.ngOnDestroy();
           },
           error:(err)=>{

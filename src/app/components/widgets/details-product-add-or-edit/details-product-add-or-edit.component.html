@@ -18,6 +18,7 @@
         [initialBarCode]="barCode"
         /> -->
         <app-select-product-w
+        (priceChanged)="onProductSelected($event)"
         [products]="productos"
         formControlName="idProduct"
         [initialBarCode]="this.barCode"
@@ -50,7 +51,7 @@
         class="search-input"
         [ngClass]="{'invalid-input': productGroup.get('price')?.invalid && submitted}">
       
-
+        <h4>Precio sugerido:  {{priceSuggest}}</h4>
 
 
     <button class="add-filter">
