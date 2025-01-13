@@ -18,7 +18,7 @@
         [initialBarCode]="barCode"
         /> -->
         <app-select-product-w
-        (priceChanged)="onProductSelected($event)"
+        (productSelected)="onProductSelected($event)"
         [products]="productos"
         formControlName="idProduct"
         [initialBarCode]="this.barCode"

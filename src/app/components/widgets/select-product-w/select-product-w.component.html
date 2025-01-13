@@ -51,18 +51,23 @@
 
 
       />
+
     
       <!-- Lista desplegable para productos filtrados -->
-      <ul *ngIf="isDropdownOpen && filteredProducts.length > 0" class="dropdown-menu">
-        <li
-          *ngFor="let product of filteredProducts; let i = index"
-          [class.active]="i === activeIndex"
-          (click)="selectProduct(product)"
-          (mouseenter)="activeIndex = i"
-        >
-          {{ product.barCode }} - {{ product.description }}
-        </li>
-      </ul>
+      @if (isDropdownOpen && filteredProducts.length > 0) {
+
+         <ul class="dropdown-menu">
+           <li
+             *ngFor="let product of filteredProducts; let i = index"
+             [class.active]="i === activeIndex"
+             (click)="selectProduct(product)"
+             (mouseenter)="activeIndex = i"
+           >
+             {{ product.barCode }} - {{ product.description }}
+           </li>
+         </ul>
+      }
+       
     
       <!-- Mensaje cuando no hay resultados -->
       <!-- <div *ngIf="isDropdownOpen && filteredProducts.length === 0 && searchTerm.length > 0 && !selectedProduct && this.isValidProduct()" >

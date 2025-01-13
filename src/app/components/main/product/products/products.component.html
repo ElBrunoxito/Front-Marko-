@@ -44,7 +44,7 @@
           </ng-container>
         
           <ng-container matColumnDef="des">
-            <th class="bold" style="width: 25%;"  mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <th class="bold" style="width: 20%;"  mat-header-cell *matHeaderCellDef>Descripcion</th>
             <td class="bajo" mat-cell *matCellDef="let element">{{element.description}}</td>
           </ng-container>
         
@@ -58,10 +58,17 @@
             <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.initialStock}}</td>
           </ng-container>
 
-          <ng-container matColumnDef="pri">
-            <th class="bold" mat-header-cell *matHeaderCellDef>Precio de venta</th>
-            <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.price}}</td>
+          <ng-container matColumnDef="priBuy">
+            <th class="bold" style="background-color: green; color:white;" mat-header-cell *matHeaderCellDef>Precio de venta</th>
+            <td class="bajo" style="text-align: center; color: green; font-weight: bold;" mat-cell *matCellDef="let element">{{element.priceBuy}}</td>
           </ng-container>
+
+          <ng-container matColumnDef="priSale">
+            <th class="bold" style="background-color: red; color:white;" mat-header-cell *matHeaderCellDef>Precio de compra</th>
+            <td class="bajo" style="text-align: center; color:red; font-weight: bold  ;" mat-cell *matCellDef="let element">{{element.priceSale}}</td>
+          </ng-container>
+
+    
 
           <ng-container matColumnDef="stkA">
             <th class="bold" mat-header-cell *matHeaderCellDef>Stock Actual</th>
@@ -77,6 +84,17 @@
             <th class="bold" mat-header-cell *matHeaderCellDef>Estado</th>
             <td class="bajo" mat-cell *matCellDef="let element">{{element.state}}</td>
           </ng-container>
+
+          <ng-container matColumnDef="stockMax">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Stock maximo</th>
+            <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.maxStock}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="stockMin">
+            <th class="bold" mat-header-cell *matHeaderCellDef>Stock minimo</th>
+            <td class="bajo" style="text-align: center;" mat-cell *matCellDef="let element">{{element.minStock}}</td>
+          </ng-container>
+
 
           <ng-container matColumnDef="act">
             <th class="bold" mat-header-cell *matHeaderCellDef>Acciones</th>

@@ -3,13 +3,12 @@ import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-error-options',
-  standalone: true,
-  imports: [
-    MatButtonModule
-  ],
-  templateUrl: './error-options.component.html',
-  styleUrl: './error-options.component.scss'
+    selector: 'app-error-options',
+    imports: [
+        MatButtonModule
+    ],
+    templateUrl: './error-options.component.html',
+    styleUrl: './error-options.component.scss'
 })
 export class ErrorOptionsComponent {
 

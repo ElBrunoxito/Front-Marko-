@@ -12,16 +12,15 @@ import { StorageService } from '../../../interceptors/storage.service';
 
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgIf,
-    MatInputModule,
-    MatButtonModule
-  ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    selector: 'app-login',
+    imports: [
+        ReactiveFormsModule,
+        NgIf,
+        MatInputModule,
+        MatButtonModule
+    ],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   public loginGroup!:FormGroup;

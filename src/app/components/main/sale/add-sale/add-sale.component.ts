@@ -24,22 +24,21 @@ import { GetCollectDTO } from '../../../../models/Collect';
 import { CollectWidgetComponent } from '../../../widgets/collect-widget/collect-widget.component';
 
 @Component({
-  selector: 'app-add-sale',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIcon,
-    FormsModule,
-    SelectorComponent,
-    NgClass,
-    CommonModule
-  ],
-  templateUrl: './add-sale.component.html',
-  styleUrl: './add-sale.component.scss'
+    selector: 'app-add-sale',
+    imports: [
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        ButtonModule,
+        MatIcon,
+        FormsModule,
+        SelectorComponent,
+        NgClass,
+        CommonModule
+    ],
+    templateUrl: './add-sale.component.html',
+    styleUrl: './add-sale.component.scss'
 })
 export class AddSaleComponent {
 
@@ -207,6 +206,7 @@ export class AddSaleComponent {
       data: { 
         product: null,
         isBuy:false,
+        type:'SALE',
         barCode
       }
     });
@@ -253,6 +253,8 @@ export class AddSaleComponent {
       data: { 
         product,
         isBuy:false,
+        type:'SALE',
+
 
         //productos:this.productos,
 
@@ -368,6 +370,7 @@ export class AddSaleComponent {
           
           this.idSale = response.idSale;
           this.nroComprobante = response.code
+          this.createCollect()
         },
         error:(err)=>{
           this.helping.openFieldError(()=>{},err.message);

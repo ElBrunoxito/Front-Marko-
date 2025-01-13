@@ -14,18 +14,15 @@ import { routes } from '../../../app.routes';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-collect-widget',
-  standalone: true,
-  imports: [
-    SelectorComponent,
-    ReactiveFormsModule,
-    FormsModule,
-    NgClass,
-    NgIf,
-    CommonModule
-  ],
-  templateUrl: './collect-widget.component.html',
-  styleUrl: './collect-widget.component.scss'
+    selector: 'app-collect-widget',
+    imports: [
+        SelectorComponent,
+        ReactiveFormsModule,
+        FormsModule,
+        CommonModule
+    ],
+    templateUrl: './collect-widget.component.html',
+    styleUrl: './collect-widget.component.scss'
 })
 export class CollectWidgetComponent implements OnInit,OnDestroy {
 
@@ -225,7 +222,9 @@ export class CollectWidgetComponent implements OnInit,OnDestroy {
 
 
   async createCollect(){
-
+    if(this.isView){
+      return;
+    }
     if(!this.idTypePayment){
       this.helping.openSnackBar("Rellene el tipo de pago", "",4000)
     }

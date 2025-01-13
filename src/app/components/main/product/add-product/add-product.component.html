@@ -55,12 +55,45 @@
 
     </div>
 
-    <input 
-    matInput 
-    formControlName="price" 
-    placeholder="Precio para la venta" 
-    class="search-input"
-    [ngClass]="{'invalid-input': productGroup.get('price')?.invalid && this.submitted}">
+    
+    <div class="row">
+
+        <input 
+        matInput 
+        formControlName="priceBuy" 
+        placeholder="Precio de compra" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('priceBuy')?.invalid && this.submitted}">
+    
+        <input 
+        matInput 
+        formControlName="priceSale" 
+        placeholder="Precio de venta" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('priceSale')?.invalid && this.submitted}">
+    
+    </div>
+
+    <br>
+    <h6>Indicadores</h6>
+    <br>
+    <div class="row">
+        <input 
+        matInput 
+        formControlName="stockMin" 
+        placeholder="Stock minimo" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('stockMin')?.invalid && this.submitted}">
+    
+        <input 
+        matInput 
+        formControlName="stockMax" 
+        placeholder="Stock maximo" 
+        class="search-input"
+        [ngClass]="{'invalid-input': productGroup.get('stockMax')?.invalid && this.submitted}">
+    
+    </div>
+
     <button class="add-filter">
         @if (this.isEdit) {
             Modificar

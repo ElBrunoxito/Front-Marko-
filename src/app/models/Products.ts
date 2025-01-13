@@ -1,17 +1,25 @@
 import { UUID } from "angular2-uuid";
 import { CategoryAddDTO } from "./Category";
 
+
 export interface ProductGet {
-  idProduct: string;         // UUID se representa como string en TS
+  idProduct: string; // UUID se representa como string en TypeScript
   barCode: string;
   description: string;
   unit: string;
-  initialStock:number
-  price:number
-  currentStock: number;      // Long en Java se convierte en number en TS
+  initialStock: number; // Long se mapea como number
+
+  priceBuy: number; // Double se mapea como number
+  priceSale: number;
+
+  minStock: number;
+  maxStock: number;
+
+  currentStock: number;
+
   category: string;
   //state: boolean;
-  state:string
+  state: string; // Boolean se mapea como boolean
 }
 
 
@@ -26,27 +34,36 @@ export interface ProductAddDTO {
   barCode: string;
   description: string;
   initialStock?: number;     // Valor por defecto de 0 en tu clase Java
-  price:number;
+  priceBuy?:number
+  priceSale?:number
+  minStock?:number
+  maxStock?:number
+
   categoryAddFast: CategoryAddDTO;  // Asumiendo que esta interfaz también existe
   unitAddFast: UnitAddDTO;
 }
 
 
 
-export interface ProductGetAdminDTO{
-  idProduct: string;  // UUID as string
+
+export interface ProductGetAdminDTO {
+  idProduct: string; // UUID se representa como string en TypeScript
   barCode: string;
   description: string;
-  initialStock: number;
-  price:number
+  initialStock: number; // Long en Java se mapea a number en TypeScript
+
+  priceBuy: number; // Double en Java se mapea a number en TypeScript
+  priceSale: number;
+  minStock: number;
+  maxStock: number;
+
   category: string;
   unit: string;
 }
-
-
-export interface ProductGetUserDTO{
-  idProduct: UUID;  // UUID as string
+export interface ProductGetUserDTO {
+  idProduct: string; // UUID se r epresenta como string en TypeScript
   barCode: string;
   description: string;
-  price:number
+  priceBuy: number; // Double se mapea como number
+  priceSale: number;
 }

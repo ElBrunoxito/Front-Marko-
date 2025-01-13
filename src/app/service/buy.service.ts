@@ -4,6 +4,7 @@ import { enviorement } from '../enviorement/config';
 import { BuyAddDTO, BuyGetDTO, BuyGetDTOWithDetailsGetDTO } from '../models/Buy';
 import { catchError } from 'rxjs';
 import { HttpService } from './http.service';
+import { UUID } from 'angular2-uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,14 @@ export class BuyService {
     
     
     
+  }
+
+
+  deleteBuy(id:UUID){
+    const endpoint = `${enviorement.api}/admin/buy/delete/${id}`;
+    return this.http.delete<any>(endpoint).pipe(
+      catchError((error: HttpErrorResponse) => HttpService.handleError(error))
+    );
   }
 
 

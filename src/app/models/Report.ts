@@ -1,5 +1,5 @@
 import { UUID } from "angular2-uuid";
-
+/*
 export interface GetViewReportDTO {
     idReport: string; 
     title: string;
@@ -24,19 +24,23 @@ export interface GetSalesDataForReportDTO {
     quantity: number;
     price: number;
   }
+  */
+  export interface GetReportDTO {
+    id: number; // UUID como string
+    title: string;
+    creationDate: Date; // Tipo Date para manejar fechas
+    startDate: Date; // Tipo Date para manejar fechas
+    endDate: Date; // Tipo Date para manejar fechas
+    urlPdf: string;
+    user: string;
+}
+
   
-  export interface GenerateReportGetDTO {
-    typeEncabezado: string;
-    creationDate: string;
-    startReport: string;  
-    endReport: string;
-    quantityBuy: number;
-    totalBuy: number;
-    salesData: GetSalesDataForReportDTO[];
-    totalSales: number;
-    sumDiscounts: number;
-    margen: number;
+  ////////////////////////////
+  export interface ReportRequest {
+    title:string
+    startDate:Date;  // Formato de fecha: 'YYYY-MM-DD'
+    endDate: Date;    // Formato de fecha: 'YYYY-MM-DD'
   }
-  
   
 

@@ -10,17 +10,15 @@ import { StorageService } from '../../../interceptors/storage.service';
 import { AuthService } from '../../../service/auth.service';
 
 @Component({
-  selector: 'app-business',
-  standalone: true,
-  imports: [NgIf,
-    FormsModule,
-    ReactiveFormsModule,
-    NgClass,
-    MatTableModule
-    
-  ],
-  templateUrl: './business.component.html',
-  styleUrl: './business.component.scss'
+    selector: 'app-business',
+    imports: [NgIf,
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        MatTableModule
+    ],
+    templateUrl: './business.component.html',
+    styleUrl: './business.component.scss'
 })
 export class BusinessComponent implements OnInit{
   businessGroup!: FormGroup;

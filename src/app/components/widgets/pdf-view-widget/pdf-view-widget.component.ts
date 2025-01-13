@@ -5,13 +5,12 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'app-pdf-view-widget',
-  standalone: true,
-  imports: [
-    MatDialogModule
-  ],
-  templateUrl: './pdf-view-widget.component.html',
-  styleUrl: './pdf-view-widget.component.scss'
+    selector: 'app-pdf-view-widget',
+    imports: [
+        MatDialogModule
+    ],
+    templateUrl: './pdf-view-widget.component.html',
+    styleUrl: './pdf-view-widget.component.scss'
 })
 export class PdfViewWidgetComponent {
   pdfUrl: SafeResourceUrl;

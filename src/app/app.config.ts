@@ -8,11 +8,14 @@ import { authInterceptor } from './interceptors/auth.interceptor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldAutoCompleteComponent } from './components/widgets/field-auto-complete/field-auto-complete.component';
 
+
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
     provideAnimationsAsync(),
+
 
     provideHttpClient(withInterceptors([authInterceptor])),
 

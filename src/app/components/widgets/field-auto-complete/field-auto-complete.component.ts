@@ -9,24 +9,23 @@ import { map, Observable, of, startWith } from 'rxjs';
 
 
 @Component({
-  selector: 'app-field-auto-complete',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatAutocompleteModule, 
-    ReactiveFormsModule, 
-    AsyncPipe,
-    NgClass
-  ],
-  providers:[
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FieldAutoCompleteComponent),
-      multi: true
-    }
-  ],
-  templateUrl: './field-auto-complete.component.html',
-  styleUrl: './field-auto-complete.component.scss'
+    selector: 'app-field-auto-complete',
+    imports: [
+        FormsModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        AsyncPipe,
+        NgClass
+    ],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => FieldAutoCompleteComponent),
+            multi: true
+        }
+    ],
+    templateUrl: './field-auto-complete.component.html',
+    styleUrl: './field-auto-complete.component.scss'
 })
 
 

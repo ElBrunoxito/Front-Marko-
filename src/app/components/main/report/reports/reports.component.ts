@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { GetViewReportDTO } from '../../../../models/Report';
+import { GetReportDTO } from '../../../../models/Report';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { OperationsFrontService } from '../../../../service/operations-front.service';
 import { ReportService } from '../../../../service/report.service';
@@ -13,24 +13,22 @@ import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-reports',
-  standalone: true,
-  imports: [
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIcon,
-    RouterLink,
-    FormsModule,
-  ],
-  templateUrl: './reports.component.html',
-  styleUrl: './reports.component.scss'
+    selector: 'app-reports',
+    imports: [
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        ButtonModule,
+        MatIcon,
+        FormsModule,
+    ],
+    templateUrl: './reports.component.html',
+    styleUrl: './reports.component.scss'
 })
 export class ReportsComponent implements OnInit{
 
-  displayedColumns: string[] = ['tit', 'fec', 'ran','act'];
-  dataSource = new MatTableDataSource<GetViewReportDTO>([]);
+  displayedColumns: string[] = ['tit', 'fec', 'ran','usr','act'];
+  dataSource = new MatTableDataSource<GetReportDTO>([]);
   public buscar :any = ""
 
 
@@ -47,7 +45,7 @@ export class ReportsComponent implements OnInit{
 
   constructor(
     private reportServie:ReportService,
-    private helping: OperationsFrontService,
+    public helping: OperationsFrontService,
     private router: Router
 
   ) {
@@ -57,9 +55,25 @@ export class ReportsComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.getAllData();
+    this.getAll();
 
 
+  }
+
+  getAll(){
+    this.helping.setLoading(true)
+    this.reportServie.getAll().subscribe({
+      next:(res:any)=>{
+        this.dataSource = new MatTableDataSource<GetReportDTO>(res.body);
+        this.dataSource.paginator = this.paginator;
+      },
+      error:(err)=>{
+        this.helping.openSnackBar(err.message,"OK",5000)
+      },
+      complete:()=>{
+        this.helping.setLoading(false)
+      }
+    })
   }
 
   ngAfterViewInit(): void {
@@ -74,22 +88,6 @@ export class ReportsComponent implements OnInit{
   }
   
 
-  getAllData(){
-    this.helping.setLoading(true)
-    this.reportServie.getAll().subscribe({
-      next:(res)=>{
-        this.dataSource = new MatTableDataSource<GetViewReportDTO>(res);
-        this.dataSource.paginator = this.paginator;       
-        this.helping.setLoading(false)
-      },
-      error:(err)=>{
-        this.helping.setLoading(false)
-        this.helping.openFieldErrorReload(()=>{
-          this.getAllData();
-        })
-      },
-    })
-  }
 
 
 
@@ -98,8 +96,8 @@ export class ReportsComponent implements OnInit{
     this.router.navigateByUrl('main/report/generate')
   }
 
-  delete(id:any){
-
+  openPDF(element:GetReportDTO){
+    this.helping.openPdfViewer(element.urlPdf)
   }
 
 

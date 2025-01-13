@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CreateReportGenerateProductDTO, GetViewReportDTO } from '../models/Report';
+import { ReportRequest } from '../models/Report';
 import { enviorement } from '../enviorement/config';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,16 @@ export class ReportService {
 
   getAll(){
     const endpoint = `${enviorement.api}/admin/report/getAll`;
-    return this.http.get<GetViewReportDTO[]>(endpoint);
+    return this.http.get<any>(endpoint);
   }
 
-  generateForProduct(data: CreateReportGenerateProductDTO){
-    const endpoint = `${enviorement.api}/admin/report/generate`;
-    return this.http.post<any>(endpoint,data);
+  generateForProduct(data: ReportRequest){
+    const endpoint = `${enviorement.api}/admin/report/generateByDates`;
+    const params = new HttpParams()
+    .set('title',data.title)
+    .set('startDate', data.startDate.toISOString().replace('Z', ''))
+    .set('endDate', data.endDate.toISOString().replace('Z', ''));
+    return this.http.get<any>(endpoint,{params});
   }
 
 }

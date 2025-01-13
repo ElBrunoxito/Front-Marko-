@@ -11,26 +11,24 @@ import { BehaviorSubject } from 'rxjs';
 import { GetTypePayment } from '../../../models/TypePayment';
 
 @Component({
-  selector: 'app-selector',
-  standalone: true,
-  imports: [
-    FormsModule,
-    MatAutocompleteModule, 
-    ReactiveFormsModule, 
-    AsyncPipe,
-    NgClass,
-    NgFor
-
-  ],
-  providers:[
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectorComponent),
-      multi: true
-    }
-  ],
-  templateUrl: './selector.component.html',
-  styleUrl: './selector.component.scss'
+    selector: 'app-selector',
+    imports: [
+        FormsModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        AsyncPipe,
+        NgClass,
+        NgFor
+    ],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectorComponent),
+            multi: true
+        }
+    ],
+    templateUrl: './selector.component.html',
+    styleUrl: './selector.component.scss'
 })
 export class SelectorComponent implements OnInit, OnChanges {
   @Input() invalid: boolean = false; // Para manejar la validación

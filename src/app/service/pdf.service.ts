@@ -3,7 +3,6 @@ import { jsPDF } from 'jspdf';
 import { PdfAddDTO } from '../models/PDF';
 import { enviorement } from '../enviorement/config';
 import { HttpClient } from '@angular/common/http';
-import { GenerateReportGetDTO } from '../models/Report';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 
 @Injectable({
@@ -86,7 +85,7 @@ export class PdfService {
 
 
 
-
+/*
   generatePDFType1(reportData: GenerateReportGetDTO){
     return {
       content: [
@@ -180,5 +179,5 @@ export class PdfService {
       }
     };
     
-  }
+  }*/
 }

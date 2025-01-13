@@ -10,18 +10,21 @@
 }
 
 .dropdown-menu {
+  display: block;
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
   background-color: white;
   border: 1px solid #ccc;
-  z-index: 1000;
+  z-index: 10001;
   max-height: 200px;
   overflow-y: auto;
   list-style-type: none;
   padding: 0;
   margin: 0;
+  visibility: visible;
+
 }
 
 .dropdown-menu li {

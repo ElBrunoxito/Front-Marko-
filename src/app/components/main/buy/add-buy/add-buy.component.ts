@@ -23,24 +23,20 @@ import { TypeComprobanteGetDTO } from '../../../../models/TypeComprobante';
 
 
 @Component({
-  selector: 'app-add-buy',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIcon,
-    RouterLink,
-    FormsModule,
-    FieldAutoCompleteComponent,
-    SelectorComponent,
-    NgClass,
-    NgIf
-],
-  templateUrl: './add-buy.component.html',
-  styleUrl: './add-buy.component.scss'
+    selector: 'app-add-buy',
+    imports: [
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        ButtonModule,
+        MatIcon,
+        FormsModule,
+        SelectorComponent,
+        NgClass,
+    ],
+    templateUrl: './add-buy.component.html',
+    styleUrl: './add-buy.component.scss'
 })
 export class AddBuyComponent implements OnInit {
 
@@ -182,6 +178,7 @@ export class AddBuyComponent implements OnInit {
       data: { 
         product: null,
         isBuy:true,
+        type: 'BUY',
         //productos:this.productos,
         barCode
       }
@@ -232,6 +229,8 @@ export class AddBuyComponent implements OnInit {
       data: { 
         product,
         isBuy:true,
+        type: 'BUY',
+
 
         //productos:this.productos
       }

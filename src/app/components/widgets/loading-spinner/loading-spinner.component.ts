@@ -4,13 +4,12 @@ import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-loading-spinner',
-  standalone: true,
-  imports: [
-    NgIf
-  ],
-  templateUrl: './loading-spinner.component.html',
-  styleUrl: './loading-spinner.component.scss'
+    selector: 'app-loading-spinner',
+    imports: [
+        NgIf
+    ],
+    templateUrl: './loading-spinner.component.html',
+    styleUrl: './loading-spinner.component.scss'
 })
 export class LoadingSpinnerComponent{
 

@@ -14,7 +14,7 @@
         </div>
 
 
-    <div class="product">
+    <!-- <div class="product">
         <label for="">Producto:</label>
         <app-select-product-w 
             [products]="productos"
@@ -22,7 +22,7 @@
             [invalid]="(reportGroup.get('idProduct')?.invalid || false) && submitted"
             style="width: 100%;"
         />
-    </div>
+    </div> -->
 
     <div class="dates">
         <input
@@ -42,7 +42,7 @@
     </div>
     </form>
 
-    <div class="type">
+    <!-- <div class="type">
         <label>
             <input type="checkbox" id="checkbox2" [(ngModel)]="sinCobro"/> No cobrado
           </label>
@@ -50,7 +50,7 @@
             <input type="checkbox" id="checkbox1"  [(ngModel)]="cobrado"/> Cobrado
           </label>
 
-    </div>
+    </div> -->
 
     <button class="add-filter" (click)="generate()">
         Generar

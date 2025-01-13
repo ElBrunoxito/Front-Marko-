@@ -12,16 +12,15 @@ import { Response } from '../../../../models/Response';
 import { OperationsFrontService } from '../../../../service/operations-front.service';
 
 @Component({
-  selector: 'app-add-product',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NgClass,
-    FieldAutoCompleteComponent
-],
-  templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.scss'
+    selector: 'app-add-product',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        FieldAutoCompleteComponent
+    ],
+    templateUrl: './add-product.component.html',
+    styleUrl: './add-product.component.scss'
 })
 export class AddProductComponent implements OnInit,OnDestroy{
 
@@ -60,7 +59,14 @@ export class AddProductComponent implements OnInit,OnDestroy{
       stock: ['',[Validators.required, Validators.pattern('^[0-9]+$')]], 
       category: ['', Validators.required], 
       uni: ['', Validators.required],
-      price: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]]
+      priceBuy: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]],
+      priceSale: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]],
+      //Indicators
+      stockMin: ['',[Validators.required, Validators.pattern('^[0-9]+$')]], 
+      stockMax: ['',[Validators.required, Validators.pattern('^[0-9]+$')]], 
+
+
+
 
     });
   }
@@ -77,6 +83,7 @@ export class AddProductComponent implements OnInit,OnDestroy{
       this.isEdit = false;
       this.setDataProduct(this.data.product)
     }else{
+
       this.isEdit = true;
       this.productService.getByIdForAdmin(this.data.idProduct).subscribe({
         next:(res)=>{
@@ -86,7 +93,10 @@ export class AddProductComponent implements OnInit,OnDestroy{
             barCode:res.barCode,
             description: res.description,
             initialStock:res.initialStock,
-            price: res.price,
+            priceBuy: res.priceBuy,
+            priceSale:res.priceSale,
+            maxStock:res.maxStock,
+            minStock:res.minStock,
             categoryAddFast: {
               name: res.category,
             },
@@ -140,8 +150,11 @@ export class AddProductComponent implements OnInit,OnDestroy{
       stock: [data.initialStock,[Validators.required, Validators.pattern('^[0-9]+$')]], 
       category: [data.categoryAddFast.name, Validators.required], 
       uni: [data.unitAddFast.name, Validators.required],
-      price: [data.price, [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]]
-
+      priceBuy: [data.priceBuy, [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]],
+      priceSale: [data.priceSale, [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]],
+      //Indicators
+      stockMin: [data.minStock,[Validators.required, Validators.pattern('^[0-9]+$')]], 
+      stockMax: [data.maxStock,[Validators.required, Validators.pattern('^[0-9]+$')]], 
     });
   }
 
@@ -158,7 +171,11 @@ export class AddProductComponent implements OnInit,OnDestroy{
       unitAddFast: {
         name: this.productGroup.get('uni')?.value // Obtiene el valor del campo 'uni'
       },
-      price:this.productGroup.get('price')?.value
+      priceBuy:this.productGroup.get('priceBuy')?.value,
+      priceSale:this.productGroup.get('priceSale')?.value,
+      minStock:this.productGroup.get('stockMin')?.value,
+      maxStock:this.productGroup.get('stockMax')?.value
+      
     };
   }
 
@@ -169,7 +186,11 @@ export class AddProductComponent implements OnInit,OnDestroy{
       stock: ['', Validators.pattern('^[0-9]+$')], 
       category: ['', Validators.required], 
       uni: ['', Validators.required],
-      price: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]]
+      priceBuy: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]],
+      priceSale: ['', [Validators.required, Validators.pattern('^\\d+(\\.\\d{1,2})?$'),Validators.min(0.01)]],
+      //Indicators
+      stockMin: ['',[Validators.required, Validators.pattern('^[0-9]+$')]], 
+      stockMax: ['',[Validators.required, Validators.pattern('^[0-9]+$')]], 
 
     });
     this.submitted = false;
@@ -194,7 +215,7 @@ export class AddProductComponent implements OnInit,OnDestroy{
     this.submitted = true;
 
     if(this.productGroup.valid){
-
+/*
       var product:ProductAddDTO = {  
         idProduct:this.data.idProduct!,
         barCode:this.productGroup.get("codigo")?.value,
@@ -208,7 +229,10 @@ export class AddProductComponent implements OnInit,OnDestroy{
         },
         price:this.productGroup.get('price')?.value
 
-      }
+      }*/
+      var product : ProductAddDTO = this.getDataProduct();
+      product.idProduct = this.data.idProduct!
+
       const confirmed = await this.helping.openFieldErrorWithOptions("Advertencia", `El producto ${product.description} se va agregar con stock inicial${product.initialStock}\nEstas seguro de crear el cobro`)
       if(!confirmed){
         return;

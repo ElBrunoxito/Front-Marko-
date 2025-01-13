@@ -15,16 +15,15 @@ import { DetailSaleAddDTO } from '../../../models/Sale';
   //import { notZeroValidator } from './path-to-your-validator'; // Asegúrate de importar el validador
 
 @Component({
-  selector: 'app-details-product-add-or-edit',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    NgClass,
-    SelectProductWComponent
-],
-  templateUrl: './details-product-add-or-edit.component.html',
-  styleUrl: './details-product-add-or-edit.component.scss'
+    selector: 'app-details-product-add-or-edit',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NgClass,
+        SelectProductWComponent
+    ],
+    templateUrl: './details-product-add-or-edit.component.html',
+    styleUrl: './details-product-add-or-edit.component.scss'
 })
 export class DetailsProductAddOrEditComponent implements OnInit,OnDestroy{
 
@@ -72,25 +71,35 @@ export class DetailsProductAddOrEditComponent implements OnInit,OnDestroy{
 
 
   public barCode:string = '';
+  
+  //SALE, BUY
+  type: string = ""
 
 
   ngOnDestroy(): void {
   }
 
   priceSuggest!:number 
-  onProductSelected(price:number) {
-    this.productGroup.patchValue({price})
-    this.priceSuggest = price
+  onProductSelected(product:ProductGetUserDTO) {
+    //this.productGroup.patchValue({price})
+    ///////////////////////////////////
+    //Aqui es donde vamos a cambiar 
+    ////////////////////////////////
+    if(this.type === 'BUY'){
+      this.priceSuggest = product.priceBuy
+    }else{
+      this.priceSuggest = product.priceSale
+    }
     
   }
   ngOnInit(): void {
+    this.type = this.data.type;
+
 
     this.isBuy = this.data.isBuy;
 
 
-    setInterval(()=>{
-      console.warn(this.productGroup.get("idProduct")?.value)
-    },2000)
+
     //this.productos = this.data.productos;
     this.getAllProducts()
 

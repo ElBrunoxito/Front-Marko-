@@ -4,7 +4,7 @@ import { FormControl, FormGroup, FormsModule, NG_VALUE_ACCESSOR, NgModel, Reacti
 import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteSelectedEvent, MatOption } from '@angular/material/autocomplete';
 import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { map, Observable, startWith } from 'rxjs';
+import { filter, map, Observable, startWith } from 'rxjs';
 import { ProductGetUserDTO } from '../../../models/Products';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatOptionModule } from '@angular/material/core';
@@ -14,29 +14,27 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { UUID } from 'angular2-uuid';
 
 @Component({
-  selector: 'app-select-product-w',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
-    CommonModule,
-    NgSelectModule,
-    FormsModule,
-    NgIf
-
-  ],
-  providers:[
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectProductWComponent),
-      multi: true
-    }
-  ],
-  templateUrl: './select-product-w.component.html',
-  styleUrl: './select-product-w.component.scss'
+    selector: 'app-select-product-w',
+    imports: [
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        CommonModule,
+        NgSelectModule,
+        FormsModule,
+        NgFor
+    ],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectProductWComponent),
+            multi: true
+        }
+    ],
+    templateUrl: './select-product-w.component.html',
+    styleUrl: './select-product-w.component.scss'
 })
 export class SelectProductWComponent implements OnInit,OnChanges {
 
@@ -49,6 +47,9 @@ export class SelectProductWComponent implements OnInit,OnChanges {
   @Input() invalid:boolean = false;
   @Output() productSelected = new EventEmitter<ProductGetUserDTO>();
 
+
+
+
   searchTerm: string = ''; // El valor de búsqueda
   filteredProducts: any[] = []; // Productos filtrados
   isDropdownOpen: boolean = false; // Controla el despliegue del dropdown
@@ -56,11 +57,11 @@ export class SelectProductWComponent implements OnInit,OnChanges {
   selectedProduct: ProductGetUserDTO | null = null; // Producto seleccionado actualmente
 
   private pendingValue: UUID | null = null; 
-  @Output() priceChanged = new EventEmitter<any>(); 
+  //@Output() priceChanged = new EventEmitter<any>(); 
 
 
   private onChange: (value: UUID | null) => void = () => {
-    this.priceChanged.emit()
+    //this.priceChanged.emit()
 
   };
   private onTouched: () => void = () => {};
@@ -68,13 +69,15 @@ export class SelectProductWComponent implements OnInit,OnChanges {
 
   private onChangeWithPriceProduct(product:ProductGetUserDTO){
     this.onChange(product.idProduct);
-    this.priceChanged.emit(product.price);
+    this.productSelected.emit(product)
 
   }
 
 
 
-  constructor(private cdRef: ChangeDetectorRef) { }
+  constructor(private cdRef: ChangeDetectorRef) {
+
+   }
 
   ngOnInit() {
     // Mostrar todos los productos al inicio y abrir el dropdown
@@ -167,7 +170,7 @@ export class SelectProductWComponent implements OnInit,OnChanges {
 //        this.onChange(product.idProduct); // Asignar el idProduct al formControlName
         this.onChangeWithPriceProduct(product)
 
-        this.productSelected.emit(product); // Emitir el producto seleccionado
+        ///this.productSelected.emit(product); // Emitir el producto seleccionado
     }
 
     // Forzar la actualización de la vista

@@ -15,22 +15,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpService } from '../../../../service/http.service';
 
 @Component({
-  selector: 'app-sales',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIcon,
-    RouterLink,
-    FormsModule,
-
-
-  ],
-  templateUrl: './sales.component.html',
-  styleUrl: './sales.component.scss'
+    selector: 'app-sales',
+    imports: [
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        ButtonModule,
+        MatIcon,
+        RouterLink,
+        FormsModule,
+    ],
+    templateUrl: './sales.component.html',
+    styleUrl: './sales.component.scss'
 })
 export class SalesComponent {
   displayedColumns: string[] = ['fec','code','sub','des','total','cobrado','tipo','user','act']
@@ -254,6 +251,22 @@ export class SalesComponent {
   }
 
   delete(id:any){
+    this.helping.openFieldErrorWithOptions("Advertencia","Quieres eliminar esta compra, no hay vuelta atras??")
+    .then((confirmed)=>{
+      if (confirmed) {
+          
+        this.saleService.deleteSale(id).subscribe({
+          next:(res)=>{
+            this.helping.openSnackBar(res.message,"OK",5000)
+          },
+          error:(err)=>{
+            this.helping.openSnackBar(err.message,"OK",5000)
+          }
+        })
+
+      } else {}
+    });
+
 
   }
 

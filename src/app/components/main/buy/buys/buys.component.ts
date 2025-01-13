@@ -14,20 +14,19 @@ import { OperationsFrontService } from '../../../../service/operations-front.ser
 import { ErrorDialogComponent } from '../../../widgets/error-dialog/error-dialog.component';
 
 @Component({
-  selector: 'app-buys',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIcon,
-    RouterLink,
-    FormsModule,
-  ],
-  templateUrl: './buys.component.html',
-  styleUrl: './buys.component.scss'
+    selector: 'app-buys',
+    imports: [
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        ButtonModule,
+        MatIcon,
+        RouterLink,
+        FormsModule,
+    ],
+    templateUrl: './buys.component.html',
+    styleUrl: './buys.component.scss'
 })
 export class BuysComponent implements OnInit {
 
@@ -141,6 +140,22 @@ export class BuysComponent implements OnInit {
   }
 
   delete(id:any){
+    console.log(id)
+    this.helping.openFieldErrorWithOptions("Advertencia","Quieres eliminar esta compra, no hay vuelta atras??")
+    .then((confirmed)=>{
+      if (confirmed) {
+          
+        this.buyService.deleteBuy(id).subscribe({
+          next:(res)=>{
+            this.helping.openSnackBar(res.message,"OK",5000)
+          },
+          error:(err)=>{
+            this.helping.openSnackBar(err.message,"OK",5000)
+          }
+        })
+
+      } else {}
+    });
 
   }
 

@@ -21,26 +21,25 @@ import { OperationsFrontService } from '../../../../service/operations-front.ser
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-products',
-  standalone: true,
-  imports: [
-    MatFormFieldModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatButtonModule,
-    ButtonModule,
-    MatIcon,
-    FormsModule,
-],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.scss'
+    selector: 'app-products',
+    imports: [
+        MatFormFieldModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatButtonModule,
+        ButtonModule,
+        MatIcon,
+        FormsModule,
+    ],
+    templateUrl: './products.component.html',
+    styleUrl: './products.component.scss'
 })
 
 
 
 export class ProductsComponent implements OnInit{
   //Paginator
-  displayedColumns: string[] = ['cod', 'des', 'uni', 'stk','pri','stkA', 'cat','est','act'];
+  displayedColumns: string[] = ['cod', 'des', 'uni', 'stk','priBuy','priSale','stkA', 'cat','est','stockMax','stockMin','act'];
   dataSource = new MatTableDataSource<ProductGet>([]);
   public buscar :any = ""
 
@@ -52,14 +51,15 @@ export class ProductsComponent implements OnInit{
   private productSaveOrEdit: ProductAddDTO = {
     barCode: '',             
     description: '',         
-    //initialStock: ,         
+    //initialStock: ,
+             
     categoryAddFast: {       
       name: ''
     },
     unitAddFast: {            
       name: ''
     },
-    price:0.0
+    
   };
 
 
@@ -136,7 +136,7 @@ export class ProductsComponent implements OnInit{
     console.log(this.productSaveOrEdit)
     const dialogRef = this.matDialog.open(AddProductComponent, {
       width: '483px',
-      height: '377px',
+      height: '550px',
       data: { 
         //codigo:this.buscar,
         idProduct: null,
@@ -158,8 +158,7 @@ export class ProductsComponent implements OnInit{
           idProduct: '',
           barCode: '',
           description: '',
-          initialStock: 0,
-          price:0.0,
+          //initialStock: 0,
           categoryAddFast:{
             name:''
           },
@@ -178,7 +177,7 @@ export class ProductsComponent implements OnInit{
   edit(id:any){
     const dialogRef = this.matDialog.open(AddProductComponent, {
       width: '483px',
-      height: '377px',
+      height: '550px',
       data: { 
         idProduct: id,
         //product: null

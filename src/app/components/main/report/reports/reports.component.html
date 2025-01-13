@@ -46,23 +46,28 @@
           
             <ng-container matColumnDef="fec">
               <th class="bold" style="width: 25%;"  mat-header-cell *matHeaderCellDef>Fecha de creacion</th>
-              <td class="bajo" mat-cell *matCellDef="let element">{{element.creation}}</td>
+              <td class="bajo" mat-cell *matCellDef="let element">{{this.helping.formatDateTimeFromString(element.creationDate)}}</td>
             </ng-container>
           
             <ng-container matColumnDef="ran">
               <th class="bold" mat-header-cell *matHeaderCellDef>Rango de fecha</th>
-              <td class="bajo" mat-cell *matCellDef="let element">{{element.rangoDate}}</td>
+              <td class="bajo" mat-cell *matCellDef="let element">{{this.helping.formatDateToString(element.startDate) + " - " + helping.formatDateToString(element.endDate)}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="usr">
+              <th class="bold" mat-header-cell *matHeaderCellDef>Rango de fecha</th>
+              <td class="bajo" mat-cell *matCellDef="let element">{{element.user}}</td>
             </ng-container>
 
             <ng-container matColumnDef="act">
               <th class="bold" mat-header-cell *matHeaderCellDef>Acciones</th>
               <td mat-cell *matCellDef="let element">
 
-            
-                <!-- Botón de agregar -->
-                <button mat-icon-button color="accent" (click)="delete(element)">
-                  <mat-icon style="transform: scale(0.9);">add</mat-icon>
+        
+                <button mat-icon-button color="accent" (click)="openPDF(element)">
+                  <mat-icon style="transform: scale(0.9);">picture_as_pdf</mat-icon>
                 </button>
+
               </td>
             </ng-container>
   

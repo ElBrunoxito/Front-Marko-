@@ -6,14 +6,13 @@ import { RouterLink } from '@angular/router';
 import { StorageService } from '../../../interceptors/storage.service';
 
 @Component({
-  selector: 'app-nav-left',
-  standalone: true,
-  imports: [
-    MatIconModule,
-    RouterLink
-  ],
-  templateUrl: './nav-left.component.html',
-  styleUrl: './nav-left.component.scss'
+    selector: 'app-nav-left',
+    imports: [
+        MatIconModule,
+        RouterLink
+    ],
+    templateUrl: './nav-left.component.html',
+    styleUrl: './nav-left.component.scss'
 })
 export class NavLeftComponent implements OnInit {
 

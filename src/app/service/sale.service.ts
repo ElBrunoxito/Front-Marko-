@@ -57,10 +57,19 @@ export class SaleService {
     
   }
 
+  deleteSale(id:UUID){
+    const endpoint = `${enviorement.api}/user/sale/delete/${id}`;
+    return this.http.delete<any>(endpoint).pipe(
+      catchError((error: HttpErrorResponse) => HttpService.handleError(error))
+    );
+  }
+
 
   generateUrlPdf(idSale:UUID){
     const endpoint = `${enviorement.api}/user/collect/generatePdf/${idSale}`;
-    return this.http.get<any>(endpoint)
+    return this.http.get<any>(endpoint).pipe(
+      catchError((error: HttpErrorResponse) => HttpService.handleError(error))
+    )
     
 
   }
