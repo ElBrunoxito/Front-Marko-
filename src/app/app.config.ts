@@ -7,6 +7,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './interceptors/auth.interceptor';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FieldAutoCompleteComponent } from './components/widgets/field-auto-complete/field-auto-complete.component';
+import { SocketIoModule } from 'ngx-socket-io';
 
 
 
@@ -15,8 +16,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }), 
     provideRouter(routes), 
     provideAnimationsAsync(),
-
-
     provideHttpClient(withInterceptors([authInterceptor])),
 
   /*  provideNativeDateAdapter(),

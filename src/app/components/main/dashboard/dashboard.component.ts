@@ -1,6 +1,5 @@
 import { ChangeDetectorRef, Component, effect, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { StorageService } from '../../../interceptors/storage.service';
-import ApexCharts from 'apexcharts'
 import { ChartModule } from 'primeng/chart';
 import { isPlatformBrowser } from '@angular/common';
 import { DashboardService } from '../../../service/dashboard.service';

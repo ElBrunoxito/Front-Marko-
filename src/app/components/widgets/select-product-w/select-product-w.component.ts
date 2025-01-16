@@ -10,7 +10,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatOptionModule } from '@angular/material/core';
 import { OperationsFrontService } from '../../../service/operations-front.service';
 import { ProductService } from '../../../service/product.service';
-import { NgSelectModule } from '@ng-select/ng-select';
 import { UUID } from 'angular2-uuid';
 
 @Component({
@@ -22,7 +21,6 @@ import { UUID } from 'angular2-uuid';
         MatInputModule,
         MatOptionModule,
         CommonModule,
-        NgSelectModule,
         FormsModule,
         NgFor
     ],

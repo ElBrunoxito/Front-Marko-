@@ -8,7 +8,7 @@ import { StorageService } from './interceptors/storage.service';
     selector: 'app-root',
     imports: [
         RouterOutlet,
-        LoadingSpinnerComponent
+        LoadingSpinnerComponent,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss'

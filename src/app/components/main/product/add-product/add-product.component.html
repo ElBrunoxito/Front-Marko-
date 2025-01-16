@@ -64,9 +64,11 @@
         placeholder="Precio de compra" 
         class="search-input"
         [ngClass]="{'invalid-input': productGroup.get('priceBuy')?.invalid && this.submitted}">
-    
+        
         <input 
+        
         matInput 
+        name="est"
         formControlName="priceSale" 
         placeholder="Precio de venta" 
         class="search-input"

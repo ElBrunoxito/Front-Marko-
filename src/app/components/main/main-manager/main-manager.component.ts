@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavLeftComponent } from '../nav-left/nav-left.component';
 import { NavTopComponent } from "../nav-top/nav-top.component";
+import { WebSocketService } from '../../../service/web-socket.service';
 
 @Component({
     selector: 'app-main-manager',
@@ -15,7 +16,21 @@ import { NavTopComponent } from "../nav-top/nav-top.component";
 })
 export class MainManagerComponent {
 
+    stockMessage: string = '';
 
+  constructor(private webSocketService: WebSocketService) {}
+
+  ngOnInit(): void {
+    this.webSocketService.connect();
+    this.webSocketService.subscribeToStockUpdates().subscribe((message) => {
+      this.stockMessage = message; 
+      console.warn('Mensaje de stock recibido:', message);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.webSocketService.disconnect(); 
+  }
 
 }
 
